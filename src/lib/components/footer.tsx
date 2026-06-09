@@ -2,20 +2,41 @@ import Link from "next/link"
 
 export default function Footer() {
   return (
-    <footer className="border-t mt-16">
-      <div className="max-w-6xl mx-auto px-6 py-8 text-sm text-gray-500 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-col gap-1">
-          <div>© {new Date().getFullYear()} Business Name</div>
+    <footer className="bg-[var(--color-deep)] text-[var(--color-cream)]">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 text-sm sm:px-8 md:grid-cols-[1.4fr_1fr_1fr_auto]">
+        <div>
+          <div className="brand-mark">TREE<span className="brand-star">*</span>STAR</div>
+          <p className="mt-5 max-w-md leading-7 text-[var(--color-cream)]/76">
+            Fresh natural soap handmade in NYC with organic plant oils, soft
+            lather, clean scents, and a tree planted with every purchase.
+          </p>
           <Link
             href="https://nyc.voltanpo.org"
             target="_blank"
             rel="noreferrer"
-            className="text-gray-600 hover:underline"
+            className="mt-5 inline-flex font-medium text-[var(--color-fern)] transition hover:text-[var(--color-gold)]"
           >
             Website made by @VoltaNYC
           </Link>
         </div>
-        <div>Built with Volta</div>
+        <div className="space-y-3 text-[var(--color-cream)]/76">
+          <div className="font-serif text-2xl text-[var(--color-cream)]">Contact</div>
+          <div>646.489.0345</div>
+          <div>jose@treestarnyc.com</div>
+          <div>Jackson Heights, NY</div>
+        </div>
+        <div className="space-y-3 text-[var(--color-cream)]/76">
+          <div className="font-serif text-2xl text-[var(--color-cream)]">Visit</div>
+          <div>Queens Night Market</div>
+          <div>Saturdays, 4:00 PM - Midnight</div>
+          <div>April 18 - October 31</div>
+        </div>
+        <div className="flex h-24 w-24 items-center justify-center rounded-full border border-[var(--color-gold)] font-mono text-xs uppercase tracking-[0.16em] text-[var(--color-gold)]">
+          EST. 2017
+        </div>
+        <div className="border-t border-[rgba(74,124,82,0.5)] pt-6 text-[var(--color-cream)]/64 md:col-span-4">
+          &copy; {new Date().getFullYear()} TREE*STAR NYC. Built with Volta.
+        </div>
       </div>
     </footer>
   )
