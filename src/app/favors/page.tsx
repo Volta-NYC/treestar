@@ -19,7 +19,7 @@ export default function FavorsPage() {
               <article key={point} className="surface rounded-lg bg-[var(--color-cream)] p-7">
                 <h2 className="font-serif text-3xl font-semibold">{point}</h2>
                 <p className="mt-4 leading-7 text-[var(--color-forest)]">
-                  Thoughtful little bars guests can actually use, made with TREE*STAR’s warm, nature-forward style.
+                  Thoughtful little bars guests can actually use, made with TREE*STAR's warm, nature-forward style.
                 </p>
               </article>
             ))}

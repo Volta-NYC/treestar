@@ -183,9 +183,10 @@ export default function ShopPage() {
                 ))}
               </div>
             </div>
-            <label className="flex w-full flex-col gap-2 font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-forest)] md:w-64">
+            <label htmlFor="shop-sort" className="flex w-full flex-col gap-2 font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-forest)] md:w-64">
               Sort by
               <select
+                id="shop-sort"
                 className="rounded-lg border border-[rgba(74,124,82,0.36)] bg-[var(--color-cream)] px-4 py-3 font-sans text-base normal-case text-[var(--color-deep)] outline-none focus:border-[var(--color-moss)]"
                 value={sort}
                 onChange={(event) => setSort(event.target.value as Sort)}

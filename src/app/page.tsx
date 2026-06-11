@@ -1,5 +1,9 @@
 import Image from "next/image"
 import Link from "next/link"
+import NewsletterForm from "@/lib/components/newsletter-form"
+import ProductPrice from "@/lib/components/product-price"
+import ProductVisual from "@/lib/components/product-visual"
+import { products } from "@/lib/products"
 
 const testimonials = [
   {
@@ -40,6 +44,10 @@ const testimonials = [
   },
 ]
 
+const trustItems = ["Organic Plant Oils", "1 Tree Planted Per Purchase", "Handmade in NYC"]
+const featuredNames = ["Honey + Oatmeal Bar Soap", "Lavender Aromatherapy Bar Soap", "Turmeric Bar Soap", "White Birch Soy Candle"]
+const featuredProducts = featuredNames.map((name) => products.find((product) => product.name === name)!).filter(Boolean)
+
 export default function HomePage() {
   return (
     <div className="overflow-hidden bg-[var(--color-bg)] text-[var(--color-deep)]">
@@ -59,7 +67,7 @@ export default function HomePage() {
             <p className="mt-8 font-mono text-sm uppercase tracking-[0.18em] text-[var(--color-fern)]">
               Fresh natural soap handmade in NYC
             </p>
-            <h1 className="hero-heading mt-5 max-w-4xl uppercase">
+            <h1 className="hero-heading fade-up mt-5 max-w-4xl uppercase">
               Elevate your clean
             </h1>
             <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -87,6 +95,16 @@ export default function HomePage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="border-y border-[rgba(74,124,82,0.22)] bg-[var(--color-cream)] px-5 py-5 sm:px-8">
+        <div className="mx-auto grid max-w-7xl gap-3 font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-deep)] md:grid-cols-3">
+          {trustItems.map((item) => (
+            <div key={item} className="rounded-lg bg-[var(--color-surface)] px-4 py-4 text-center">
+              {item}
+            </div>
+          ))}
         </div>
       </section>
 
@@ -123,6 +141,29 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="bg-[var(--color-cream)] px-5 py-20 sm:px-8 lg:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <div className="eyebrow">Best Sellers</div>
+              <h2 className="section-heading mt-4">Customer favorites for fresh starts.</h2>
+            </div>
+            <Link href="/shop" className="button-secondary text-[var(--color-deep)]">Shop all</Link>
+          </div>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {featuredProducts.map((product) => (
+              <Link key={product.slug} href={`/shop/${product.slug}`} className="shop-card overflow-hidden rounded-lg border border-[rgba(74,124,82,0.26)] bg-white">
+                <ProductVisual product={product} className="aspect-square" />
+                <div className="space-y-4 p-5">
+                  <h3 className="font-serif text-2xl leading-tight text-[var(--color-deep)]">{product.name}</h3>
+                  <ProductPrice product={product} />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="bg-[var(--color-surface)] px-5 py-20 sm:px-8 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
@@ -151,11 +192,11 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[0.8fr_1fr]">
           <div className="dark-surface rounded-2xl p-8 text-[var(--color-cream)] sm:p-10">
             <div className="eyebrow text-[var(--color-fern)]">2026 Market Dates</div>
-            <h2 className="mt-5 font-serif text-6xl font-semibold leading-none">Stay tuned</h2>
+            <h2 className="mt-5 font-serif text-6xl font-semibold leading-none">Queens Night Market</h2>
             <p className="mt-6 max-w-md text-lg leading-8 text-[var(--color-cream)]/78">
-              More market dates are coming. For now, visit us at Queens Night Market
-              during the season.
+              Saturdays, April 18-October 31, 4:00pm-Midnight. Come say hi, sniff the bars, and leave cleaner than you arrived.
             </p>
+            <Link href="https://queensnightmarket.com/" target="_blank" rel="noreferrer" className="button-primary mt-8">Market details</Link>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
             <article className="surface rounded-2xl bg-[var(--color-cream)] p-8">
@@ -199,20 +240,7 @@ export default function HomePage() {
             </button>
           </form>
 
-          <form className="dark-surface rounded-2xl p-8 text-[var(--color-cream)] sm:p-10">
-            <div className="eyebrow text-[var(--color-fern)]">Join our mailing list</div>
-            <label className="mt-8 block font-mono text-sm uppercase tracking-[0.14em] text-[var(--color-cream)]/72">
-              Email*
-            </label>
-            <input className="mt-3 w-full rounded-lg border border-[rgba(250,247,240,0.22)] bg-[rgba(250,247,240,0.92)] px-4 py-4 text-[var(--color-deep)] outline-none focus:border-[var(--color-gold)]" type="email" />
-            <button className="button-primary mt-5 w-full" type="submit">
-              Soapscribe
-            </button>
-            <label className="mt-6 flex items-start gap-3 text-sm leading-6 text-[var(--color-cream)]/78">
-              <input className="mt-1 h-4 w-4 accent-[var(--color-gold)]" type="checkbox" />
-              <span>I want to subscribe to your mailing list.</span>
-            </label>
-          </form>
+          <NewsletterForm />
         </div>
       </section>
     </div>

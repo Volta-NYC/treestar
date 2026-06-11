@@ -26,7 +26,7 @@ export default function CollabsPage() {
           </article>
           <aside className="dark-surface rounded-lg p-8 text-[var(--color-cream)]">
             <p className="eyebrow text-[var(--color-fern)]">Want to collaborate?</p>
-            <h2 className="mt-4 font-serif text-5xl font-semibold leading-none">Let’s make something lush.</h2>
+            <h2 className="mt-4 font-serif text-5xl font-semibold leading-none">Let's make something lush.</h2>
             <p className="mt-6 leading-7 text-[var(--color-cream)]/78">
               Food brands, artists, shops, venues, and neighborly dreamers are welcome.
             </p>
