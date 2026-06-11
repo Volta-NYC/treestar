@@ -1,17 +1,6 @@
 import "./globals.css"
 import Navbar from "@/lib/components/navbar"
 import Footer from "@/lib/components/footer"
-import { Playfair_Display, Inter } from "next/font/google";
-
-export const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-});
-
-export const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
 
 export const metadata = {
   title: "TREE*STAR NYC | Handmade Natural Soap",
@@ -26,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${playfair.variable} ${inter.variable} font-sans`}>
+      <body>
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

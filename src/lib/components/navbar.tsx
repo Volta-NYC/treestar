@@ -1,8 +1,14 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
+import { useState } from "react"
+import Image from "next/image"
+import Link from "next/link"
+
+const shopItems = [
+  { label: "Soaps", href: "/shop/soaps" },
+  { label: "Candles", href: "/shop/candles" },
+  { label: "Goodies", href: "/shop/goodies" },
+]
 
 const dropdownItems = [
   "Favors & Gifts",
@@ -12,132 +18,116 @@ const dropdownItems = [
   "Gift Card",
   "Blog",
   "Notifications",
-];
+]
+
+const mainLinks = [
+  { label: "Home", href: "/" },
+  { label: "About us", href: "/about" },
+  { label: "Collabs", href: "/collabs" },
+  { label: "FAQ", href: "/faq" },
+]
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [shopOpen, setShopOpen] = useState(false)
+  const [moreOpen, setMoreOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50">
-      <div className="bg-white/95 backdrop-blur-xl border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="h-20 flex items-center justify-between">
+    <header className="fixed left-0 top-0 z-50 w-full">
+      <div className="bg-[var(--color-deep)] px-4 py-2 text-center font-mono text-[0.68rem] uppercase tracking-[0.16em] text-[var(--color-cream)] sm:text-xs">
+        Shipping on us on orders over $50
+      </div>
+      <div className="border-b border-[rgba(28,51,32,0.16)] bg-[rgba(250,247,240,0.94)] backdrop-blur-xl">
+        <div className="mx-auto flex min-h-20 max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-3 sm:px-8 lg:flex-nowrap">
+          <Link href="/" className="flex items-center" aria-label="TREE*STAR home">
+            <Image
+              src="/img/logo.avif"
+              alt="TREE*STAR"
+              width={132}
+              height={48}
+              priority
+              className="h-auto w-28 object-contain sm:w-32"
+            />
+          </Link>
 
-            {/* LEFT: LOGO + NAV */}
-            <div className="flex items-center gap-10">
+          <nav className="order-3 flex w-full flex-wrap items-center gap-x-4 gap-y-3 overflow-visible font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-deep)] lg:order-none lg:w-auto lg:justify-center lg:gap-x-6">
+            <Link className="shrink-0 transition hover:text-[var(--color-moss)]" href="/">
+              Home
+            </Link>
 
-              {/* LOGO */}
-              <Link href="/" className="flex items-center">
-                <Image
-                  src="/img/logo.avif"
-                  alt="TreeStar NYC"
-                  width={120}
-                  height={40}
-                  className="object-contain"
-                />
+            <div
+              className="relative -my-3 shrink-0 py-3"
+              onMouseEnter={() => setShopOpen(true)}
+              onMouseLeave={() => setShopOpen(false)}
+            >
+              <Link className="transition hover:text-[var(--color-moss)]" href="/shop">
+                Shop
               </Link>
-
-              {/* NAV LINKS */}
-              <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-gray-800">
-
-                <Link className="hover:text-black transition" href="/about">
-                  About Us
-                </Link>
-
-                <Link className="hover:text-black transition" href="/collab">
-                  Collab
-                </Link>
-
-                <Link className="hover:text-black transition" href="/faq">
-                  FAQ
-                </Link>
-
-                {/* DROPDOWN */}
-                <div
-                  className="relative"
-                  onMouseEnter={() => setOpen(true)}
-                  onMouseLeave={() => setOpen(false)}
-                >
-                  <button className="hover:text-black transition">
-                    More ▾
-                  </button>
-
-                  {open && (
-                    <div className="absolute top-10 left-0 w-64 z-50 pt-2">
-                      <div className="bg-white border border-gray-200 shadow-xl rounded-xl overflow-hidden">
-                        {dropdownItems.map((item) => (
-                          <Link
-                            key={item}
-                            href={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
-                            className="block px-4 py-3 text-sm text-gray-800 hover:bg-gray-100 transition"
-                          >
-                            {item}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+              {shopOpen ? (
+                <div className="absolute left-0 top-full z-50 w-44">
+                  <div className="overflow-hidden rounded-lg border border-[rgba(74,124,82,0.22)] bg-[var(--color-cream)] shadow-xl">
+                    {shopItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="block px-4 py-3 text-[0.72rem] text-[var(--color-deep)] transition hover:bg-[var(--color-surface)]"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </nav>
+              ) : null}
             </div>
 
-            {/* RIGHT: CTAs */}
-            <div className="flex items-center gap-4">
-
-              {/* LOGIN (icon + link style) */}
-              <Link
-                href="/login"
-                className="flex items-center gap-2 text-sm text-gray-800 hover:text-black transition"
-              >
-                {/* user icon */}
-                <svg
-                  className="w-4 h-4"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path d="M20 21a8 8 0 10-16 0" />
-                  <circle cx="12" cy="7" r="4" />
-                </svg>
-                Log in
+            {mainLinks.map((link) => (
+              <Link key={link.href} className="shrink-0 transition hover:text-[var(--color-moss)]" href={link.href}>
+                {link.label}
               </Link>
+            ))}
 
-              {/* CART */}
-              <Link
-                href="/cart"
-                className="p-2 rounded-full hover:bg-gray-100 transition"
-              >
-                <svg
-                  className="w-5 h-5 text-gray-900"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m12-9l2 9M9 21h6" />
-                </svg>
-              </Link>
-
-              {/* SHOP NOW CTA (PRIMARY) */}
-              <Link
-                href="/shop"
-                className="
-                  px-6 py-2 rounded-full
-                  bg-black text-white font-semibold
-                  hover:bg-gray-900
-                  shadow-md
-                  transition
-                "
-              >
-                Shop Now
-              </Link>
-
+            <div
+              className="relative -my-3 shrink-0 py-3"
+              onMouseEnter={() => setMoreOpen(true)}
+              onMouseLeave={() => setMoreOpen(false)}
+            >
+              <button className="transition hover:text-[var(--color-moss)]" type="button">
+                More
+              </button>
+              {moreOpen ? (
+                <div className="absolute left-0 top-full z-50 w-60">
+                  <div className="overflow-hidden rounded-lg border border-[rgba(74,124,82,0.22)] bg-[var(--color-cream)] shadow-xl">
+                    {dropdownItems.map((item) => (
+                      <Link
+                        key={item}
+                        href={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
+                        className="block px-4 py-3 text-[0.72rem] text-[var(--color-deep)] transition hover:bg-[var(--color-surface)]"
+                      >
+                        {item}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
             </div>
+          </nav>
 
+          <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.12em] text-[var(--color-deep)]">
+            <Link href="/loyalty" className="hidden transition hover:text-[var(--color-moss)] sm:inline">
+              View points
+            </Link>
+            <Link href="/login" className="transition hover:text-[var(--color-moss)]">
+              Log In
+            </Link>
+            <Link
+              href="/cart"
+              className="flex h-9 min-w-9 items-center justify-center rounded-full border border-[rgba(28,51,32,0.24)] px-3 transition hover:border-[var(--color-moss)] hover:text-[var(--color-moss)]"
+              aria-label="Cart with 0 items"
+            >
+              0
+            </Link>
           </div>
         </div>
       </div>
     </header>
-  );
+  )
 }

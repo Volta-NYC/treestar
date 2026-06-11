@@ -1,204 +1,220 @@
-import Link from "next/link";
+import Image from "next/image"
+import Link from "next/link"
+
+const testimonials = [
+  {
+    name: "kendra baumer",
+    location: "rochester, ny",
+    quote:
+      "LOVE this soap. My skin loves it too :) I was buying from Rocky Mountain Soap Factory in Canada previously and didn't think I'd ever try anything else, but my cousin convinced me to try this and it's even better all-natural soap. Not to mention I'm happy to support something local. The owners are also fantastic to work with and very communicative. Package came in a timely manner.",
+  },
+  {
+    name: "david parker",
+    location: "sherman oaks, ca",
+    quote:
+      "Every single one of your soaps leaves me feeling especially clean. I especially like the Icelandic Kelp collab, Sandalwood and Amber, and Lemongrass soaps, but they all make me feel wonderful after I use them.",
+  },
+  {
+    name: "kristen lopez",
+    location: "bronx, ny",
+    quote:
+      "Smells GREAT. Not too strong but enough that you can smell it. The scrub is great at exfoliating.",
+  },
+  {
+    name: "bridget plante",
+    location: "queens, ny",
+    quote:
+      "I am in love with these soaps!! I have battled incredibly sensitive skin my whole life and have tried probably 99% of products out there including very high end, super pricey ones. These soaps are the first thing I have EVER used on my skin that keeps breakouts and eczema flares at bay. My skin feels pampered. Soft, moisturized, even in the middle of winter! I love using the bags the soap comes in as a loofah as well, they offer great exfoliation. This is soap as it is meant to be, pure, natural, kind to your body and kind to the planet. Do yourself a favor and check them out!",
+  },
+  {
+    name: "vienna d'ornellas",
+    location: "new york, ny",
+    quote:
+      "Love these soaps, they are so gentle that one can use them on their face, while at the same time leaving the body clean. They come in different scents and are made with different natural ingredients that are great for my skin. This never dried out my sking nor made it too oily.",
+  },
+  {
+    name: "emily welch",
+    location: "knoxville, tn",
+    quote:
+      "I live in Tennessee and received a soap terranium from my brother in Brooklyn as a gift. I have never loved any soap so much!!! Can't wait to buy more! Such a wonderful product! Thank you!",
+  },
+]
 
 export default function HomePage() {
   return (
-    <main className="bg-[#F6F7F3] text-[#123024] overflow-x-hidden">
-
-      {/* ================= HERO ================= */}
-      <section className="relative min-h-screen flex items-center justify-center">
-
-        {/* background image layer */}
-        <div className="absolute inset-0 bg-[url('/hero.jpg')] bg-cover bg-center" />
-
-        {/* dark green overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0F2D22]/70 via-[#0F2D22]/40 to-[#F6F7F3]" />
-
-        {/* floating glow blobs */}
-        <div className="absolute top-[-120px] left-[-120px] w-[400px] h-[400px] bg-[#2D6A4F]/30 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-150px] right-[-150px] w-[500px] h-[500px] bg-[#52B788]/20 blur-[140px] rounded-full" />
-
-        <div className="relative z-10 max-w-5xl text-center px-6 space-y-8">
-
-          <div className="inline-block px-4 py-1 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white text-xs tracking-widest">
-            EST. 2017 · NYC ARTISAN SOAP
-          </div>
-
-          <h1 className="text-5xl md:text-6xl font-semibold text-white leading-tight">
-            Fresh Natural Soap <br /> Handmade in NYC
-          </h1>
-
-          <p className="text-white/80 text-lg max-w-2xl mx-auto">
-            Elevate your clean with botanical ingredients crafted in small batches.
-            Every bar is designed to feel like a ritual, not a routine.
-          </p>
-
-          <div className="flex justify-center gap-4 pt-4">
-
-            <Link
-              href="/shop"
-              className="
-                px-8 py-3 rounded-full
-                bg-[#2D6A4F]
-                text-white font-medium
-                shadow-lg shadow-black/20
-                hover:scale-[1.03]
-                transition
-              "
-            >
-              Shop Now
-            </Link>
-
-            <Link
-              href="#about"
-              className="
-                px-8 py-3 rounded-full
-                bg-white/10 text-white
-                backdrop-blur
-                border border-white/20
-                hover:bg-white/20 transition
-              "
-            >
-              Explore Story
-            </Link>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* ================= ABOUT (FLOATING CARD LAYOUT) ================= */}
-      <section id="about" className="py-28 px-6 relative">
-
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F6F7F3] to-[#E8F3EC]" />
-
-        <div className="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center">
-
-          {/* image card */}
-          <div className="relative">
-            <div className="absolute inset-0 bg-[#2D6A4F]/10 blur-2xl rounded-3xl" />
-            <div className="relative bg-gray-300 aspect-square rounded-3xl shadow-2xl" />
-          </div>
-
-          {/* text card */}
-          <div className="bg-white rounded-3xl shadow-xl p-10 space-y-6 border border-[#E6EFE8]">
-
-            <h2 className="text-4xl font-semibold text-[#1F4D3A]">
-              About Us
-            </h2>
-
-            <p className="text-[#4E6B5A] leading-relaxed">
-              TREE*STAR was founded on the idea that bath and shower time should be
-              fun, nourishing, sensational experiences you look forward to.
-              Our soaps tickle the senses while they feed your skin.
-              Each purchase plants a tree so you can stay green while you scrub clean.
+    <div className="overflow-hidden bg-[var(--color-bg)] text-[var(--color-deep)]">
+      <section className="hero-forest relative min-h-[92vh] px-5 pb-20 pt-32 text-[var(--color-cream)] sm:px-8 lg:pt-36">
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[var(--color-bg)] to-transparent" />
+        <div className="relative mx-auto grid max-w-7xl items-end gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="max-w-4xl">
+            <div className="eyebrow text-[var(--color-fern)]">EST. 2017</div>
+            <Image
+              src="/img/logo.avif"
+              alt="TREE*STAR"
+              width={220}
+              height={82}
+              priority
+              className="mt-8 h-auto w-44 object-contain sm:w-56"
+            />
+            <p className="mt-8 font-mono text-sm uppercase tracking-[0.18em] text-[var(--color-fern)]">
+              Fresh natural soap handmade in NYC
             </p>
-
-            <Link
-              href="/about"
-              className="inline-block px-6 py-3 rounded-full bg-[#1F4D3A] text-white hover:opacity-90 transition"
-            >
-              Learn More
-            </Link>
-
+            <h1 className="hero-heading mt-5 max-w-4xl uppercase">
+              Elevate your clean
+            </h1>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <Link href="/shop" className="button-primary">
+                Shop now
+              </Link>
+              <div className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-cream)]/76">
+                Shipping on us on orders over $50
+              </div>
+            </div>
           </div>
 
+          <div className="relative min-h-[420px] overflow-hidden rounded-[2rem] border border-[rgba(250,247,240,0.24)] bg-[rgba(250,247,240,0.08)] p-5 shadow-[0_24px_70px_rgba(0,0,0,0.22)] backdrop-blur">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_22%,rgba(184,146,58,0.30),transparent_28%),radial-gradient(circle_at_72%_60%,rgba(123,174,127,0.34),transparent_34%)]" />
+            <div className="relative grid h-full min-h-[380px] grid-cols-3 gap-3">
+              {["Fresh", "Natural", "Soap"].map((word, index) => (
+                <div
+                  key={word}
+                  className={`flex items-center justify-center rounded-2xl border border-[rgba(250,247,240,0.22)] bg-[rgba(28,51,32,0.58)] px-3 text-center font-serif text-4xl italic text-[var(--color-cream)] shadow-inner ${
+                    index === 1 ? "translate-y-8" : index === 2 ? "translate-y-16" : ""
+                  }`}
+                >
+                  {word}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ================= FEATURE CARDS (INSPIRATION STYLE LAYERING) ================= */}
-      <section className="py-24 px-6 bg-[#E8F3EC]">
-
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-
-          {[
-            ["Natural Ingredients", "Plant-based oils for skin nourishment"],
-            ["Small Batch Craft", "Made in limited NYC studio runs"],
-            ["Eco Impact", "Every order plants a tree"]
-          ].map(([title, desc], i) => (
-            <div
-              key={i}
-              className="
-                bg-white/70 backdrop-blur
-                border border-white
-                rounded-2xl p-6
-                shadow-lg
-                hover:translate-y-[-4px]
-                transition
-              "
-            >
-              <h3 className="font-semibold text-[#1F4D3A] text-lg">
-                {title}
-              </h3>
-              <p className="text-sm text-[#4E6B5A] mt-2">
-                {desc}
+      <section id="about" className="px-5 py-20 sm:px-8 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="image-slot fern-slot min-h-[440px] overflow-hidden rounded-2xl p-8 text-left">
+            <div>
+              <div className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-fern)]">
+                treestar jungle
+              </div>
+              <div className="mt-5 max-w-xs font-serif text-5xl leading-none text-[var(--color-cream)]">
+                Fresh plant oils, clean lather, bright bath rituals.
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="eyebrow">About Us</div>
+            <h2 className="section-heading mt-4">TREE*STAR was founded on fun, nourishing shower time.</h2>
+            <div className="mt-8 space-y-6 text-lg leading-8 text-[var(--color-forest)]">
+              <p>
+                TREE*STAR was founded on the idea that bath and shower time should be fun,
+                nourishing, sensational experiences you look forward to.
+              </p>
+              <p>
+                Our soaps tickle the senses while they feed your skin. We use premium,
+                organic, food-grade, plant oils in all of our products and each purchase
+                plants one tree, so you can stay green while you scrub clean.
               </p>
             </div>
-          ))}
-
-        </div>
-      </section>
-
-      {/* ================= REVIEWS (LAYERED FLOATING CARDS) ================= */}
-      <section className="py-28 px-6">
-
-        <div className="max-w-6xl mx-auto space-y-14">
-
-          <h2 className="text-4xl font-semibold text-center text-[#1F4D3A]">
-            What People Are Saying
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-6">
-
-            {[
-              "LOVE this soap. My skin loves it too :)",
-              "Every soap leaves me feeling especially clean.",
-              "Smells great but not overpowering.",
-              "First product that helped my sensitive skin."
-            ].map((text, i) => (
-              <div
-                key={i}
-                className="
-                  group relative p-6 rounded-2xl
-                  bg-white
-                  shadow-lg
-                  border border-[#E6EFE8]
-                  hover:shadow-2xl
-                  transition
-                "
-              >
-                <p className="text-[#4E6B5A] italic">
-                  “{text}”
-                </p>
-
-                <div className="absolute inset-0 rounded-2xl bg-[#2D6A4F]/0 group-hover:bg-[#2D6A4F]/5 transition" />
-              </div>
-            ))}
-
+            <Link href="/about" className="button-primary mt-8">
+              Learn more
+            </Link>
           </div>
-
         </div>
       </section>
 
-      {/* ================= FINAL CTA ================= */}
-      <section className="py-28 px-6 bg-[#0F2D22] text-white text-center">
-
-        <h2 className="text-4xl font-semibold">
-          Elevate Your Clean
-        </h2>
-
-        <p className="text-white/70 mt-4">
-          Natural skincare made to feel like a ritual.
-        </p>
-
-        <Link
-          href="/shop"
-          className="inline-block mt-8 px-8 py-3 bg-[#52B788] text-black font-medium rounded-full hover:scale-105 transition"
-        >
-          Shop Now
-        </Link>
-
+      <section className="bg-[var(--color-surface)] px-5 py-20 sm:px-8 lg:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-3xl">
+            <div className="eyebrow">What people are saying</div>
+            <h2 className="section-heading mt-4">Real words from clean-skin regulars.</h2>
+          </div>
+          <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {testimonials.map((item) => (
+              <article key={`${item.name}-${item.location}`} className="surface rounded-lg bg-[var(--color-cream)] p-6">
+                <p className="text-base leading-7 text-[var(--color-forest)]">&quot;{item.quote}&quot;</p>
+                <div className="mt-6 border-t border-[rgba(74,124,82,0.28)] pt-5">
+                  <h3 className="font-mono text-sm uppercase tracking-[0.14em] text-[var(--color-deep)]">
+                    {item.name}
+                  </h3>
+                  <p className="mt-1 text-sm uppercase tracking-[0.12em] text-[var(--color-moss)]">
+                    {item.location}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
-    </main>
-  );
+      <section className="px-5 py-20 sm:px-8 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[0.8fr_1fr]">
+          <div className="dark-surface rounded-2xl p-8 text-[var(--color-cream)] sm:p-10">
+            <div className="eyebrow text-[var(--color-fern)]">2026 Market Dates</div>
+            <h2 className="mt-5 font-serif text-6xl font-semibold leading-none">Stay tuned</h2>
+            <p className="mt-6 max-w-md text-lg leading-8 text-[var(--color-cream)]/78">
+              More market dates are coming. For now, visit us at Queens Night Market
+              during the season.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            <article className="surface rounded-2xl bg-[var(--color-cream)] p-8">
+              <div className="eyebrow">Contact Us</div>
+              <div className="mt-6 space-y-3 text-lg text-[var(--color-forest)]">
+                <p>Tel. 646.489.0345</p>
+                <p>Email: jose@treestarnyc.com</p>
+                <p>Jackson Heights, NY</p>
+              </div>
+              <p className="mt-8 font-mono text-xs uppercase tracking-[0.16em] text-[var(--color-moss)]">
+                Image by Marc Zimmer
+              </p>
+            </article>
+            <article className="surface rounded-2xl bg-[var(--color-cream)] p-8">
+              <div className="eyebrow">Visit Us</div>
+              <h3 className="mt-6 font-serif text-4xl text-[var(--color-deep)]">
+                Queens Night Market
+              </h3>
+              <div className="mt-5 space-y-3 text-lg text-[var(--color-forest)]">
+                <p>April 18th - October 31st</p>
+                <p>Saturdays 4:00 pm - Midnight</p>
+                <p>Come say hi!</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[var(--color-cream)] px-5 py-20 sm:px-8 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_0.85fr]">
+          <form className="surface rounded-2xl bg-white p-6 sm:p-8">
+            <div className="eyebrow">Tell Us</div>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <input className="rounded-lg border border-[rgba(74,124,82,0.32)] bg-[var(--color-cream)] px-4 py-4 outline-none focus:border-[var(--color-moss)]" placeholder="Name" />
+              <input className="rounded-lg border border-[rgba(74,124,82,0.32)] bg-[var(--color-cream)] px-4 py-4 outline-none focus:border-[var(--color-moss)]" placeholder="Email" type="email" />
+              <input className="rounded-lg border border-[rgba(74,124,82,0.32)] bg-[var(--color-cream)] px-4 py-4 outline-none focus:border-[var(--color-moss)] sm:col-span-2" placeholder="Subject" />
+              <textarea className="min-h-40 rounded-lg border border-[rgba(74,124,82,0.32)] bg-[var(--color-cream)] px-4 py-4 outline-none focus:border-[var(--color-moss)] sm:col-span-2" placeholder="Type your message here..." />
+            </div>
+            <button className="button-primary mt-6" type="submit">
+              Submit
+            </button>
+          </form>
+
+          <form className="dark-surface rounded-2xl p-8 text-[var(--color-cream)] sm:p-10">
+            <div className="eyebrow text-[var(--color-fern)]">Join our mailing list</div>
+            <label className="mt-8 block font-mono text-sm uppercase tracking-[0.14em] text-[var(--color-cream)]/72">
+              Email*
+            </label>
+            <input className="mt-3 w-full rounded-lg border border-[rgba(250,247,240,0.22)] bg-[rgba(250,247,240,0.92)] px-4 py-4 text-[var(--color-deep)] outline-none focus:border-[var(--color-gold)]" type="email" />
+            <button className="button-primary mt-5 w-full" type="submit">
+              Soapscribe
+            </button>
+            <label className="mt-6 flex items-start gap-3 text-sm leading-6 text-[var(--color-cream)]/78">
+              <input className="mt-1 h-4 w-4 accent-[var(--color-gold)]" type="checkbox" />
+              <span>I want to subscribe to your mailing list.</span>
+            </label>
+          </form>
+        </div>
+      </section>
+    </div>
+  )
 }

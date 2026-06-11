@@ -1,11 +1,18 @@
 import Link from "next/link"
+import Image from "next/image"
 
 export default function Footer() {
   return (
     <footer className="bg-[var(--color-deep)] text-[var(--color-cream)]">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 text-sm sm:px-8 md:grid-cols-[1.4fr_1fr_1fr_auto]">
         <div>
-          <div className="brand-mark">TREE<span className="brand-star">*</span>STAR</div>
+          <Image
+            src="/img/logo.avif"
+            alt="TREE*STAR"
+            width={150}
+            height={54}
+            className="h-auto w-36 object-contain"
+          />
           <p className="mt-5 max-w-md leading-7 text-[var(--color-cream)]/76">
             Fresh natural soap handmade in NYC with organic plant oils, soft
             lather, clean scents, and a tree planted with every purchase.
